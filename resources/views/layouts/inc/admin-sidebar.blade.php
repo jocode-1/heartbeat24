@@ -90,14 +90,14 @@
                 </a>
                 <ul class="sub-menu" >
                     <li>
-                        <a class="" href="blo-categories.html" >All Categories</a>
+                        <a class="" href="{{ url('admin/add-category') }}" >Add Categories</a>
                     </li>
                     <li>
-                        <a class="" href="blo-category-add.html" >Add Category</a>
+                        <a class="" href="{{ url('admin/category') }}" >View Categories</a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="" href="blo-category-edit.html" >Edit Category</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
             <li class=""> 
