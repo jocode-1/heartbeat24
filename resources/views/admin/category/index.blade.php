@@ -41,7 +41,8 @@
                         <i class="box_close fa fa-times"></i>
                     </div>
                 </header>
-                <div class="content-body">    <div class="row">
+                <div class="content-body">
+                    <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
 
                             <table class="table table-hover">
@@ -57,20 +58,21 @@
 
                                 <tbody>
                                     @foreach ($category as $item)
-                                    <tr>
-                                        <td> {{$item->id}} </td>
-                                        <td> {{$item->name}} </td>
-                                        <td> {{$item->description}} </td>
-                                        <td> {{$item->status == '1' ? 'Hidden': 'Shown'}} </td>
-                                        <td> <a href="" class="btn btn-success">Edit</a> </td>
-                                    </tr>
-                                    @endforeach   
+                                        <tr>
+                                            <td> {{ $item->id }} </td>
+                                            <td> {{ $item->name }} </td>
+                                            <td> {{ $item->description }} </td>
+                                            <td> {{ $item->status == '1' ? 'Hidden' : 'Shown' }} </td>
+                                            <td> <a href="" class="btn btn-success">Edit</a> </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
                         </div>
                     </div>
                 </div>
-            </section></div>
+            </section>
+        </div>
     </section>
 @endsection
