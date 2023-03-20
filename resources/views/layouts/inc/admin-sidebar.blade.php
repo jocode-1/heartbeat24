@@ -108,7 +108,7 @@
                 </a>
                 <ul class="sub-menu" >
                     <li>
-                        <a class="" href="{{ url('admin/add-posts')}}" >Add Post</a>
+                        <a class="" href="{{ url('admin/add-post')}}" >Add Post</a>
                     </li>
                     <li>
                         <a class="" href="{{ url('admin/posts')}}" >View Post</a>
