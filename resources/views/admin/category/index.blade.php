@@ -30,6 +30,11 @@
             </div>
         </div>
         <div class="clearfix"></div>
+        @if (session('message'))
+        <div class="alert alert-success alert-dismissible fade in">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <strong>Success:</strong> {{ session('message')}}.</div>
+            @endif
 
         <div class="col-lg-12">
             <section class="box ">
@@ -51,8 +56,9 @@
                                         <th>ID</th>
                                         <th>Category Name</th>
                                         <th>Category Description</th>
-                                        <th> Status</th>
+                                        <th>Status</th>
                                         <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
 
@@ -63,7 +69,8 @@
                                             <td> {{ $item->name }} </td>
                                             <td> {{ $item->description }} </td>
                                             <td> {{ $item->status == '1' ? 'Hidden' : 'Shown' }} </td>
-                                            <td> <a href="" class="btn btn-success">Edit</a> </td>
+                                            <td> <a href=" {{ url('admin/edit-category/'.$item->id) }}" class="btn btn-success">Edit</a> </td>
+                                            <td> <a href=" {{ url('admin/delete-category/'.$item->id) }}" class="btn btn-danger">Delete</a> </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
