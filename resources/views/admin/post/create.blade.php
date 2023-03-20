@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Add Category')
+@section('title', 'Add Post')
 
 @section('content')
 
@@ -24,7 +24,7 @@
             <div class="page-title">
 
                 <div class="pull-left">
-                    <h1 class="title">Category</h1>
+                    <h1 class="title"> Post</h1>
                 </div>
 
                 <div class="pull-right hidden-xs">
@@ -33,10 +33,10 @@
                             <a href="{{ 'dashboard' }}"><i class="fa fa-home"></i>Home</a>
                         </li>
                         <li>
-                            <a href="{{ 'category' }}">Category</a>
+                            <a href="{{ 'category' }}">Post</a>
                         </li>
                         <li class="active">
-                            <strong>Add Category</strong>
+                            <strong>Add Post</strong>
                         </li>
                     </ol>
                 </div>
@@ -47,7 +47,7 @@
 
         <section class="box ">
             <header class="panel_header">
-                <h2 class="title pull-left">Add Category</h2>
+                <h2 class="title pull-left">Add Post</h2>
                 <div class="actions panel_actions pull-right">
                     <i class="box_toggle fa fa-chevron-down"></i>
                     <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
@@ -56,21 +56,35 @@
             </header>
             <div class="content-body">
                 <div class="row">
-                    <form action="{{ url('admin/add-category') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('admin/add-post') }}" method="POST">
                         @csrf
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
 
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Category Name</label>
+                                <label class="form-label" for="field-1">Select Category</label>
+                                {{-- <span class="desc">(&lt;select&gt;)</span> --}}
+                                <div class="controls">
+                                    <select name="category_id" class="form-control">
+                                        @foreach ($category as $cateitem)
+                                        <option value="{{ $cateitem->id}}">{{ $cateitem->name }}</option>
+                                            
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">Post Name</label>
                                 <span class="desc"></span>
                                 <div class="controls">
                                     <input type="text" name="name" class="form-control">
                                 </div>
                             </div>
 
-
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Category Slug</label>
+                                <label class="form-label" for="field-1">Post Slug</label>
                                 <span class="desc"></span>
                                 <div class="controls">
                                     <input type="text" name="slug" class="form-control">
@@ -87,10 +101,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Image</label>
+                                <label class="form-label" for="field-1">Youtube Iframe Link </label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <input type="file" name="image" class="form-control">
+                                    <input type="text" name="yt_iframe" class="form-control">
                                 </div>
                             </div>
 
@@ -120,13 +134,6 @@
 
                             <div class="form-group">
                                 <li>
-                                    <input tabindex="5" type="checkbox" class="skin-square-purple" name="navbar_status">
-                                    <label class="icheck-label form-label" for="square-checkbox-9">Navbar Status</label>
-                                </li>
-                            </div>
-
-                            <div class="form-group">
-                                <li>
                                     <input type="checkbox" name="status">
                                     <label class="icheck-label form-label" for="square-checkbox-9">Status</label>
                                 </li>
@@ -136,7 +143,7 @@
 
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                             <div class="text-left">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Upload Post</button>
                                 {{-- <button type="button" class="btn">Cancel</button> --}}
                             </div>
                         </div>

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\Admin\CategoryFormRequest;
 
 
@@ -91,10 +92,10 @@ class CategoryController extends Controller
 
         if($category) {
 
-            // $destination = 'uploads/category/'.$category->image;
-            // if(File::exists($destination)) {
-            //     File::delete($destination);
-            // }
+            $destination = 'uploads/category/'.$category->image;
+            if(File::exists($destination)) {
+                File::delete($destination);
+            }
             $category->delete();
             return redirect('admin/category')->with('message', 'Category Deleted Successfully');
 

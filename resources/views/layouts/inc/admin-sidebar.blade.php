@@ -93,7 +93,7 @@
                         <a class="" href="{{ url('admin/add-category') }}" >Add Categories</a>
                     </li>
                     <li>
-                        <a class="" href="{{ url('admin/category') }}" >View Categories</a>
+                        <a class="" href="{{ url('admin/create') }}" >View Categories</a>
                     </li>
                     {{-- <li>
                         <a class="" href="blo-category-edit.html" >Edit Category</a>
@@ -103,21 +103,15 @@
             <li class=""> 
                 <a href="javascript:;">
                     <i class="fa fa-files-o"></i>
-                    <span class="title">Pages</span>
+                    <span class="title">Posts</span>
                     <span class="arrow "></span>
                 </a>
                 <ul class="sub-menu" >
                     <li>
-                        <a class="" href="blo-pages.html" >All Pages</a>
+                        <a class="" href="{{ url('admin/add-posts')}}" >Add Post</a>
                     </li>
                     <li>
-                        <a class="" href="blo-page-add.html" >Add Page</a>
-                    </li>
-                    <li>
-                        <a class="" href="blo-page-edit.html" >Edit Page</a>
-                    </li>
-                    <li>
-                        <a class="" href="blo-page-view.html" >View Page</a>
+                        <a class="" href="{{ url('admin/posts')}}" >View Post</a>
                     </li>
                 </ul>
             </li>
