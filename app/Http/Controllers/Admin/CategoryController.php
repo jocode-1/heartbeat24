@@ -91,10 +91,10 @@ class CategoryController extends Controller
 
         if($category) {
 
-            $destination = 'uploads/category/'.$category->image;
-            if(File::exists($destination)) {
-                File::delete($destination);
-            }
+            // $destination = 'uploads/category/'.$category->image;
+            // if(File::exists($destination)) {
+            //     File::delete($destination);
+            // }
             $category->delete();
             return redirect('admin/category')->with('message', 'Category Deleted Successfully');
 
