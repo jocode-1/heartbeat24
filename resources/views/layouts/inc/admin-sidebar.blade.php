@@ -93,7 +93,7 @@
                         <a class="" href="{{ url('admin/add-category') }}" >Add Categories</a>
                     </li>
                     <li>
-                        <a class="" href="{{ url('admin/create') }}" >View Categories</a>
+                        <a class="" href="{{ url('admin/category') }}" >View Categories</a>
                     </li>
                     {{-- <li>
                         <a class="" href="blo-category-edit.html" >Edit Category</a>
@@ -123,17 +123,12 @@
                 </a>
                 <ul class="sub-menu" >
                     <li>
-                        <a class="" href="blo-users.html" >All Users</a>
+                        <a class="" href="{{ url('admin/users')}}" >All Users</a>
                     </li>
                     <li>
                         <a class="" href="blo-user-add.html" >Add User</a>
                     </li>
-                    <li>
-                        <a class="" href="blo-user-edit.html" >Edit User</a>
-                    </li>
-                    <li>
-                        <a class="" href="blo-user-profile.html" >User Profile</a>
-                    </li>
+                    
                 </ul>
             </li>
             <li class=""> 

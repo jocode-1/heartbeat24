@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Add Category')
+@section('title', 'Edit User')
 
 @section('content')
 
@@ -24,7 +24,7 @@
             <div class="page-title">
 
                 <div class="pull-left">
-                    <h1 class="title">Category</h1>
+                    <h1 class="title"> Post</h1>
                 </div>
 
                 <div class="pull-right hidden-xs">
@@ -33,10 +33,10 @@
                             <a href="{{ 'dashboard' }}"><i class="fa fa-home"></i>Home</a>
                         </li>
                         <li>
-                            <a href="{{ 'category' }}">Category</a>
+                            <a href="{{ 'category' }}">User</a>
                         </li>
                         <li class="active">
-                            <strong>Add Category</strong>
+                            <strong>Edit User</strong>
                         </li>
                     </ol>
                 </div>
@@ -47,7 +47,7 @@
 
         <section class="box ">
             <header class="panel_header">
-                <h2 class="title pull-left">Add Category</h2>
+                <h2 class="title pull-left">Edit User</h2>
                 <div class="actions panel_actions pull-right">
                     <i class="box_toggle fa fa-chevron-down"></i>
                     <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
@@ -56,87 +56,53 @@
             </header>
             <div class="content-body">
                 <div class="row">
-                    <form action="{{ url('admin/add-category') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('admin/update-user/'.$user->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
 
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Category Name</label>
+                                <label class="form-label" for="field-1">FullName</label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <input type="text" name="name" class="form-control">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label class="form-label" for="field-1">Category Slug</label>
-                                <span class="desc"></span>
-                                <div class="controls">
-                                    <input type="text" name="slug" class="form-control">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label class="form-label" for="field-6">Description</label>
-                                <span class="desc"></span>
-                                <div class="controls">
-                                    <textarea name="description" id="summernote" class="form-control autogrow" cols="5" ></textarea>
+                                    <input type="text" name="name" value="{{ $user->name }}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Image</label>
+                                <label class="form-label" for="field-1">Email</label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <input type="file" name="image" class="form-control">
+                                    <input type="text" name="email" value="{{ $user->email }}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Meta Title</label>
+                                <label class="form-label" for="field-1">Created At </label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <input type="text" name="meta_title" class="form-control">
+                                    <input type="text" name="created_at" value="{{ $user->created_at->format('d/m/y') }}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="field-6">Meta Description</label>
-                                <span class="desc"></span>
+                                <label class="form-label" for="field-1">Role As</label>
                                 <div class="controls">
-                                    <textarea class="form-control autogrow" cols="5" name="meta_description"></textarea>
+                                    <select name="role_as" class="form-control">
+                                        
+                                        <option value="1" {{ $user->role_as == '1' ? 'selected':''}} >Admin</option> 
+                                        <option value="0" {{ $user->role_as == '0' ? 'selected':''}} >User</option> 
+                                        <option value="2" {{ $user->role_as == '2' ? 'selected':''}} >Blogger</option> 
+                                            
+                                     
+                                    </select>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="field-1">Meta Keyword</label>
-                                <span class="desc"></span>
-                                <div class="controls">
-                                    <input type="text" name="meta_keyword" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <li>
-                                    <input tabindex="5" type="checkbox" class="skin-square-purple" name="navbar_status">
-                                    <label class="icheck-label form-label" for="square-checkbox-9">Navbar Status</label>
-                                </li>
-                            </div>
-
-                            <div class="form-group">
-                                <li>
-                                    <input type="checkbox" name="status">
-                                    <label class="icheck-label form-label" for="square-checkbox-9">Status</label>
-                                </li>
-                            </div>
-
                         </div>
 
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                             <div class="text-left">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Upload User</button>
                                 {{-- <button type="button" class="btn">Cancel</button> --}}
                             </div>
                         </div>

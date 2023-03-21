@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Add Category')
+@section('title', 'Add Post')
 
 @section('content')
 
@@ -24,7 +24,7 @@
             <div class="page-title">
 
                 <div class="pull-left">
-                    <h1 class="title">Category</h1>
+                    <h1 class="title"> Post</h1>
                 </div>
 
                 <div class="pull-right hidden-xs">
@@ -33,10 +33,10 @@
                             <a href="{{ 'dashboard' }}"><i class="fa fa-home"></i>Home</a>
                         </li>
                         <li>
-                            <a href="{{ 'category' }}">Category</a>
+                            <a href="{{ 'category' }}">Post</a>
                         </li>
                         <li class="active">
-                            <strong>Add Category</strong>
+                            <strong>Edit Post</strong>
                         </li>
                     </ol>
                 </div>
@@ -47,7 +47,7 @@
 
         <section class="box ">
             <header class="panel_header">
-                <h2 class="title pull-left">Add Category</h2>
+                <h2 class="title pull-left">Edit Post</h2>
                 <div class="actions panel_actions pull-right">
                     <i class="box_toggle fa fa-chevron-down"></i>
                     <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
@@ -56,24 +56,40 @@
             </header>
             <div class="content-body">
                 <div class="row">
-                    <form action="{{ url('admin/add-category') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('admin/update-post/'.$post->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
 
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Category Name</label>
-                                <span class="desc"></span>
+                                <label class="form-label" for="field-1">Select Category</label>
+                                {{-- <span class="desc">(&lt;select&gt;)</span> --}}
                                 <div class="controls">
-                                    <input type="text" name="name" class="form-control">
+                                    <select name="category_id" class="form-control">
+                                        <option value="">-----Select Category----</option>
+                                        @foreach ($category as $cateitem)
+                                        <option value="{{ $cateitem->id }}">{{ $cateitem->name }}</option> 
+                                            
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
 
+
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Category Slug</label>
+                                <label class="form-label" for="field-1">Post Name</label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <input type="text" name="slug" class="form-control">
+                                    <input type="text" name="name" value="{{ $post->name }}" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">Post Slug</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="text" name="slug" value="{{ $post->slug }}" class="form-control">
                                 </div>
                             </div>
 
@@ -82,15 +98,15 @@
                                 <label class="form-label" for="field-6">Description</label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <textarea name="description" id="summernote" class="form-control autogrow" cols="5" ></textarea>
+                                    <textarea name="description" id="summernote" class="form-control autogrow" cols="5" > {{ $post->description }}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Image</label>
+                                <label class="form-label" for="field-1">Youtube Iframe Link </label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <input type="file" name="image" class="form-control">
+                                    <input type="text" name="yt_iframe" value="{{ $post->yt_iframe }}" class="form-control">
                                 </div>
                             </div>
 
@@ -98,7 +114,7 @@
                                 <label class="form-label" for="field-1">Meta Title</label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <input type="text" name="meta_title" class="form-control">
+                                    <input type="text" name="meta_title" value="{{ $post->meta_title }}" class="form-control">
                                 </div>
                             </div>
 
@@ -106,7 +122,7 @@
                                 <label class="form-label" for="field-6">Meta Description</label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <textarea class="form-control autogrow" cols="5" name="meta_description"></textarea>
+                                    <textarea class="form-control autogrow" cols="5" name="meta_description"> {{ $post->meta_description }}</textarea>
                                 </div>
                             </div>
 
@@ -114,20 +130,13 @@
                                 <label class="form-label" for="field-1">Meta Keyword</label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <input type="text" name="meta_keyword" class="form-control">
+                                    <input type="text" name="meta_keyword" value="{{ $post->meta_keyword }}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <li>
-                                    <input tabindex="5" type="checkbox" class="skin-square-purple" name="navbar_status">
-                                    <label class="icheck-label form-label" for="square-checkbox-9">Navbar Status</label>
-                                </li>
-                            </div>
-
-                            <div class="form-group">
-                                <li>
-                                    <input type="checkbox" name="status">
+                                    <input type="checkbox" name="status" {{ $post->status == '1' ? 'checked':'' }}>
                                     <label class="icheck-label form-label" for="square-checkbox-9">Status</label>
                                 </li>
                             </div>
@@ -136,7 +145,7 @@
 
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                             <div class="text-left">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Upload Post</button>
                                 {{-- <button type="button" class="btn">Cancel</button> --}}
                             </div>
                         </div>

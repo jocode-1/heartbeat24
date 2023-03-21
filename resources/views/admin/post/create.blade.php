@@ -96,7 +96,7 @@
                                 <label class="form-label" for="field-6">Description</label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    <textarea name="description" class="form-control autogrow" cols="5" ></textarea>
+                                    <textarea name="description" id="summernote" class="form-control autogrow" cols="5" ></textarea>
                                 </div>
                             </div>
 
