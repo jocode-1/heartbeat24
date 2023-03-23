@@ -34,6 +34,14 @@ class PostController extends Controller
         $post->name = $data['name'];
         $post->slug = Str::slug($data['slug']);
         $post->description = $data['description'];
+        
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/post/', $filename);
+
+            $post->image = $filename;
+        }
         $post->yt_iframe = $data['yt_iframe'];
         $post->meta_title = $data['meta_title'];
         $post->meta_description = $data['meta_description'];

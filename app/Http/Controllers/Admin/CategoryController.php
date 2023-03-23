@@ -38,7 +38,7 @@ class CategoryController extends Controller
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('uploads/category/', $filename);
 
-            $category->image = $file;
+            $category->image = $filename;
         }
 
         $category->meta_title = $data['meta_title'];

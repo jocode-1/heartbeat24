@@ -56,7 +56,7 @@
             </header>
             <div class="content-body">
                 <div class="row">
-                    <form action="{{ url('admin/add-post') }}" method="POST">
+                    <form action="{{ url('admin/add-post') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
 
@@ -97,6 +97,14 @@
                                 <span class="desc"></span>
                                 <div class="controls">
                                     <textarea name="description" id="summernote" class="form-control autogrow" cols="5" ></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">Cover Image</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="file" name="image" class="form-control">
                                 </div>
                             </div>
 

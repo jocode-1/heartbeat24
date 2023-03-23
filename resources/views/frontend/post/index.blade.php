@@ -24,7 +24,7 @@
                                     <div class="news-post standart-post">
                                         <div class="post-image">
                                             <a href="single-post-2.html">
-                                                <img src="{{ url('frontend/upload/blog/s2.jpg') }}" alt="">
+                                                <img src="{{ asset('uploads/post/'.$postitem->image) }}" height="250" width="400" alt="img">
                                             </a>
                                             <a href="#" class="category category-tech">{{ $category->name }}</a>
                                         </div>
