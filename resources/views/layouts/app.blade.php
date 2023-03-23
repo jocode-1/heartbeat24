@@ -1,102 +1,83 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    
-
-        <!-- CORE CSS FRAMEWORK - START -->
-        <link href="{{ asset('assets/plugins/pace/pace-theme-flash.css') }}" rel="stylesheet" type="text/css" media="screen"/>
-        <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/fonts/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/css/animate.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" type="text/css"/>
-        <!-- CORE CSS FRAMEWORK - END -->
-
-        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> 
-        <link href="{{ asset('assets/plugins/icheck/skins/square/orange.css') }}" rel="stylesheet" type="text/css" media="screen"/> 
-               <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> 
+    <title>@yield('title')</title>
+    <meta name="description" content="@yield('meta_description')">
+    <meta name="keywords" content="@yield('meta_keyword')">
 
 
-        <!-- CORE CSS TEMPLATE - START -->
-        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" type="text/css"/>
-        <!-- CORE CSS TEMPLATE - END -->
+
+    <!-- CORE CSS FRAMEWORK - START -->
+    <link
+        href="../../external.html?link=https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('frontend/css/modernmag-assets.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}">
+
+
 </head>
-<body class=" login_page">
-    <div class="login-wrapper">
-        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+<body>
 
-                    </ul>
+    <!-- Container -->
+    <div id="container">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+        @include('layouts.inc.frontend-navbar')
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+        @yield('content')
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+
+
+    </div>
+
+
+
+
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="title-section">
+                        <h1>Login</h1>
+                    </div>
+                    <form id="login-form">
+                        <p>Welcome! Login to your account.</p>
+                        <label for="username">Username or Email Address*</label>
+                        <input id="username" name="username" type="text">
+                        <label for="password">Password*</label>
+                        <input id="password" name="password" type="password">
+                        <button type="submit" id="submit-register">
+                            <i class="fa fa-paper-plane"></i> Login
+                        </button>
+                    </form>
+                    <p>Don't have account? <a href="register.html">Register Here</a></p>
+
                 </div>
             </div>
-        </nav> --}}
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        </div>
     </div>
+    <!-- End Login Modal -->
+
+    <script src="{{ asset('frontend/js/modernmag-plugins.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/popper.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <script
+        src="../../external.html?link=http://maps.google.com/maps/api/js?key=AIzaSyCiqrIen8rWQrvJsu-7f4rOta0fmI5r2SI&amp;sensor=false&amp;language=en">
+    </script>
+    <script src="{{ asset('frontend/js/gmap3.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/script.js') }}"></script>
 </body>
+
 </html>

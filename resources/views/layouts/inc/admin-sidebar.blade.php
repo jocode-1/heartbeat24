@@ -35,9 +35,9 @@
 
 
             <li class="open"> 
-                <a href="index-blog.html">
+                <a href="{{ url('admin/dashboard')}}">
                     <i class="fa fa-dashboard"></i>
-                    <span class="title">Dashboard</span>
+                    <span class="title {{ Request::is('admin/dashboard') ? 'active':'' }}">Dashboard</span>
                 </a>
             </li>
             <li class=""> 
@@ -90,10 +90,10 @@
                 </a>
                 <ul class="sub-menu" >
                     <li>
-                        <a class="" href="{{ url('admin/add-category') }}" >Add Categories</a>
+                        <a class="{{ Request::is('admin/add-category') ? 'active':'' }}" href="{{ url('admin/add-category') }}" >Add Categories</a>
                     </li>
                     <li>
-                        <a class="" href="{{ url('admin/category') }}" >View Categories</a>
+                        <a class="{{ Request::is('admin/category') ? 'active':'' }}" href="{{ url('admin/category') }}" >View Categories</a>
                     </li>
                     {{-- <li>
                         <a class="" href="blo-category-edit.html" >Edit Category</a>
@@ -108,10 +108,10 @@
                 </a>
                 <ul class="sub-menu" >
                     <li>
-                        <a class="" href="{{ url('admin/add-post')}}" >Add Post</a>
+                        <a class="{{ Request::is('admin/add-post') ? 'active':'' }}" href="{{ url('admin/add-post')}}" >Add Post</a>
                     </li>
                     <li>
-                        <a class="" href="{{ url('admin/posts')}}" >View Post</a>
+                        <a class="{{ Request::is('admin/posts') ? 'active':'' }}" href="{{ url('admin/posts')}}" >View Post</a>
                     </li>
                 </ul>
             </li>
@@ -123,7 +123,7 @@
                 </a>
                 <ul class="sub-menu" >
                     <li>
-                        <a class="" href="{{ url('admin/users')}}" >All Users</a>
+                        <a class="{{ Request::is('admin/users') ? 'active':'' }}" href="{{ url('admin/users')}}" >All Users</a>
                     </li>
                     <li>
                         <a class="" href="blo-user-add.html" >Add User</a>
