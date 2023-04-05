@@ -28,8 +28,8 @@
                             <div class="r4_counter db_box">
                                 <i class='pull-left fa fa-thumbs-up icon-md icon-rounded icon-primary'></i>
                                 <div class="stats">
-                                    <h4><strong>450K</strong></h4>
-                                    <span>Blog Page Views</span>
+                                    <h4><strong>{{ $categories }}</strong></h4>
+                                    <span>Total Category</span>
                                 </div>
                             </div>
                         </div>
@@ -37,8 +37,8 @@
                             <div class="r4_counter db_box">
                                 <i class='pull-left fa fa-user icon-md icon-rounded icon-orange'></i>
                                 <div class="stats">
-                                    <h4><strong>6243</strong></h4>
-                                    <span>New Visitors</span>
+                                    <h4><strong>{{ $posts }}</strong></h4>
+                                    <span>Total Posts</span>
                                 </div>
                             </div>
                         </div>
@@ -55,8 +55,8 @@
                             <div class="r4_counter db_box">
                                 <i class='pull-left fa fa-users icon-md icon-rounded icon-warning'></i>
                                 <div class="stats">
-                                    <h4><strong>1433</strong></h4>
-                                    <span>New Users</span>
+                                    <h4><strong>{{ $admin }}</strong></h4>
+                                    <span>Total Admins</span>
                                 </div>
                             </div>
                         </div>

@@ -181,12 +181,12 @@
 
             <!-- Advertisement -->
             <div class="advertisement">
-                <a href="#"><img src="upload/addsense/620x80grey.jpg" alt=""></a>
+                <a href="#"><img src="{{ ('frontend/upload/addsense/620x80grey.jpg') }}" alt=""></a>
             </div>
             <!-- End Advertisement -->
 
             <!-- more from news box -->
-            <div class="more-from-news">
+            {{-- <div class="more-from-news">
                 <h1>Weekly Top News</h1>
                 <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-4 col-6">
@@ -310,7 +310,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- end more from news box -->
         </div>
     </section>

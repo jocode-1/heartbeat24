@@ -31,10 +31,12 @@
         </div>
         <div class="clearfix"></div>
         @if (session('message'))
-        <div class="alert alert-success alert-dismissible fade in">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <strong>Success:</strong> {{ session('message')}}.</div>
-            @endif
+            <div class="alert alert-success alert-dismissible fade in">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <strong>Success:</strong> {{ session('message') }}.
+            </div>
+        @endif
 
         <div class="col-lg-12">
             <section class="box ">
@@ -69,12 +71,41 @@
                                             <td> {{ $item->name }} </td>
                                             <td> {{ $item->description }} </td>
                                             <td> {{ $item->status == '1' ? 'Hidden' : 'Shown' }} </td>
-                                            <td> <a href=" {{ url('admin/edit-category/'.$item->id) }}" class="btn btn-success">Edit</a> </td>
+                                            <td> <a href=" {{ url('admin/edit-category/' . $item->id) }}"
+                                                    class="btn btn-success">Edit</a> </td>
                                             <td> <a href=" {{ url('admin/delete-category/'.$item->id) }}" class="btn btn-danger">Delete</a> </td>
+
+                                            {{-- <td> <a data-toggle="modal" onclick="AjaxModalContent();"
+                                                    class="btn btn-danger deleteCategoryBtn">Delete</a> </td> --}}
+                                            {{-- <td> <button type="button" class="btn btn-danger deleteCategoryBtn" value="{{ $item->id }}" >Delete</button></td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+{{-- 
+                            <div class="modal fade" id="ultraModal-8">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">AJAX Content</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+
+                                            Content is loading...
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-info">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
 
                         </div>
                     </div>
@@ -82,4 +113,35 @@
             </section>
         </div>
     </section>
+
+
 @endsection
+
+{{-- @section('script')
+
+    <script>
+        $(document).ready(function() {
+            $('.deleteCategoryBtn').click(function(e) {
+                e.preventDefault();
+
+                var category_id = $(this).val();
+
+
+            });
+        });
+
+        // function AjaxModalContent() {
+        //     jQuery('#ultraModal-8').modal('show', {
+        //         backdrop: 'static'
+        //     });
+
+        //     jQuery.ajax({
+        //         url: "{{ url('admin/delete-category/'.$item->id) }}",
+        //         success: function(response) {
+        //             jQuery('#ultraModal-8 .modal-body').html(response);
+        //         }
+        //     });
+        // }
+    </script>
+
+@endsection --}}

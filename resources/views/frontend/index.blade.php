@@ -10,20 +10,23 @@
     
                     <div class="flexslider">
                         <ul class="slides">
+                            @forelse ($random_posts as $item)
                             <li>
                                 <div class="news-post large-image-post">
-                                    <img src="{{ asset('frontend/upload/blog/lg1.jpg') }}" alt="">
+                                    <img src="{{ asset('uploads/post/'.$item->image) }}" alt="">
                                     <div class="hover-box">
-                                        <a href="#" class="category category">Politic</a>
-                                        <h2><a href="single-post.html">Syrian crise, violence, refugees ...</a></h2>
+                                        <a href="#" class="category category">{{ $item->category->name }}</a>
+                                        <h2><a href="{{ url('tutorial/'.$item->category->slug. '/'. $item->slug ) }}">{{ Str::limit($item->name, 25) }}</a></h2>
                                         <ul class="post-tags">
-                                            <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                            <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                                            <li><i class="lnr lnr-user"></i>by {{$item->user->name}}</li>
+                                            <li><a href="#"><i class="lnr lnr-book"></i><span>Posted On: {{ $item->created_at->format('d-m-y') }}</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                                
+                            @empty
+                            {{-- <li>
                                 <div class="news-post large-image-post">
                                     <img src="{{ asset('frontend/upload/blog/lg2.jpg')}}" alt="">
                                     <div class="hover-box">
@@ -48,90 +51,34 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </li>
+                            </li> --}}
+                                
+                            @endforelse
+                            
                         </ul>
                     </div>
     
                 </div>
     
+                @forelse ($random_posts as $item)
                 <div class="item">
                     <div class="news-post image-post">
-                        <img src="{{ asset('frontend/upload/blog/s10.jpg')}}" alt="">
+                        <img src="{{ asset('uploads/post/'.$item->image) }}" width="400" height="250" alt="">
                         <div class="hover-box">
-                            <a href="#" class="category category-world">Politic</a>
-                            <h2><a href="single-post.html">US Muslims protests against ...</a></h2>
+                            <a href="#" class="category category-sport">{{ $item->category->name }}</a>
+                            <h2><a href="single-post.html">{{ $item->name }}</a></h2>
                             <ul class="post-tags">
-                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                                <li><i class="lnr lnr-user"></i>by {{$item->user->name}}</li>
+                                {{-- <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li> --}}
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="news-post image-post">
-                        <img src="upload/blog/s2.jpg" alt="">
-                        <div class="hover-box">
-                            <a href="#" class="category">Business</a>
-                            <h2><a href="single-post.html">Travelling is part of our life</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="news-post image-post">
-                        <img src="upload/blog/s20.jpg" alt="">
-                        <div class="hover-box">
-                            <a href="#" class="category category-fashion">Fashion</a>
-                            <h2><a href="single-post.html">Trending autumn jeans</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="news-post image-post">
-                        <img src="upload/blog/s4.jpg" alt="">
-                        <div class="hover-box">
-                            <a href="#" class="category category-food">Food</a>
-                            <h2><a href="single-post.html">Traditional food and Healthy food</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="news-post image-post">
-                        <img src="upload/blog/s30.jpg" alt="">
-                        <div class="hover-box">
-                            <a href="#" class="category category-sport">Sport</a>
-                            <h2><a href="single-post.html">Australian Open Semi-Finals</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="news-post image-post">
-                        <img src="upload/blog/s38.jpg" alt="">
-                        <div class="hover-box">
-                            <a href="#" class="category category-tech">Tech</a>
-                            <h2><a href="single-post.html">Phantom controller</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                    
+                @empty
+                    
+                @endforelse
+                
             </div>
             <!-- End wide-news-heading -->
     
@@ -149,27 +96,30 @@
                                     <h1>Latest News <i class="lnr lnr-bookmark"></i></h1>
                                 </div>
                                 <div class="row">
+                                    @forelse ($random_posts as $item)
                                     <div class="col-sm-6">
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s2.jpg" alt="">
+                                                    <img src="{{ asset('uploads/post/'.$item->image) }}" alt="">
                                                 </a>
-                                                <a href="#" class="category category-tech">Tech</a>
+                                                <a href="#" class="category category-tech">{{ $item->category->name}}</a>
                                             </div>
-                                            <h2><a href="single-post.html">New alternatives are more productive</a></h2>
+                                            <h2><a href="{{ url('tutorial/'.$item->category->slug. '/'. $item->slug ) }}">{{$item->slug}}</a></h2>
                                             <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                                <li><i class="lnr lnr-eye"></i>872 Views</li>
+                                                <li><i class="lnr lnr-user"></i>by {{$item->user->name}}</li>
+                                                {{-- <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li> --}}
+                                                <li><i class="lnr lnr-eye"></i>Posted On: {{ $item->created_at->format('d-m-y') }}</li>
                                             </ul>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur.</p>
+                                            <p>{{ Str::limit($item->description, 100) }}</p>
                                         </div>
                                     </div>
+                                    
+                                        
+                                    @empty
                                     <div class="col-sm-6">
                                         <div class="news-post standart-post">
-                                            <div class="post-image">
+                                            {{-- <div class="post-image">
                                                 <a href="single-post-2.html">
                                                     <img src="upload/blog/s4.jpg" alt="">
                                                 </a>
@@ -180,137 +130,15 @@
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
                                                 <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                                 <li><i class="lnr lnr-eye"></i>872 Views</li>
-                                            </ul>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur.</p>
+                                            </ul> --}}
+                                            <p>No Available Post.</p>
                                         </div>
                                     </div>
+                                        
+                                    @endforelse
+                                    
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post-2.html">
-                                                    <img src="upload/blog/s3.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category category-world">Lifestyle</a>
-                                            </div>
-                                            <h2><a href="single-post.html">Hapier Child</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                                <li><i class="lnr lnr-eye"></i>872 Views</li>
-                                            </ul>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post-2.html">
-                                                    <img src="upload/blog/s5.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category category-food">Food</a>
-                                            </div>
-                                            <h2><a href="single-post.html">Fruits and Vegetables</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                                <li><i class="lnr lnr-eye"></i>872 Views</li>
-                                            </ul>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post-2.html">
-                                                    <img src="upload/blog/s6.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category category-world">World</a>
-                                            </div>
-                                            <h2><a href="single-post.html">United States celebrate</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                                <li><i class="lnr lnr-eye"></i>872 Views</li>
-                                            </ul>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post-2.html">
-                                                    <img src="upload/blog/s8.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category category-tech">Tech</a>
-                                            </div>
-                                            <h2><a href="single-post.html">Technology Remote Jobs</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                                <li><i class="lnr lnr-eye"></i>872 Views</li>
-                                            </ul>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post-2.html">
-                                                    <img src="upload/blog/s23.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category category-travel">Travel</a>
-                                            </div>
-                                            <h2><a href="single-post.html">Travelling is part of our life</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                                <li><i class="lnr lnr-eye"></i>872 Views</li>
-                                            </ul>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h2>More ...</h2>
-                                        <ul class="list-news">
-                                            <li>
-                                                <h2><a href="single-post.html">Technology Remote Jobs</a></h2>
-                                            </li>
-                                            <li>
-                                                <h2><a href="single-post.html">United States celebrate</a></h2>
-                                            </li>
-                                            <li>
-                                                <h2><a href="single-post.html">Fruits and Vegetables</a></h2>
-                                            </li>
-                                            <li>
-                                                <h2><a href="single-post.html">New alternatives are more productive</a></h2>
-                                            </li>
-                                            <li>
-                                                <h2><a href="single-post.html">Fruits and Vegetables</a></h2>
-                                            </li>
-                                            <li>
-                                                <h2><a href="single-post.html">Traditional food</a></h2>
-                                            </li>
-                                            <li>
-                                                <h2><a href="single-post.html">Hapier Child</a></h2>
-                                            </li>
-                                            <li>
-                                                <h2><a href="single-post.html">Travelling is part of our life</a></h2>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                              
                             </div>
                             <!-- End Posts-block -->
                             
@@ -323,13 +151,33 @@
                                 <div class="owl-wrapper">
                                     <div class="owl-carousel" data-num="3">
                                     
+                                        @forelse ($latest_posts as $item)
+
                                         <div class="item">
                                             <div class="news-post standart-post">
                                                 <div class="post-image">
                                                     <a href="single-post-2.html">
-                                                        <img src="upload/blog/s24.jpg" alt="">
+                                                        <img src="{{ asset('uploads/post/'.$item->image) }}" alt="">
                                                     </a>
-                                                    <a href="#" class="category category-fashion">fashion</a>
+                                                    <a href="#" class="category category-travel">{{ $item->category->name}}</a>
+                                                </div>
+                                                <h2><a href="{{ url('tutorial/'.$item->category->slug. '/'. $item->slug ) }}">{{ $item->name}}</a></h2>
+                                                <ul class="post-tags">
+                                                    <li><i class="lnr lnr-user"></i>by {{$item->user->name}}</li>
+                                                    {{-- <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li> --}}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                            
+                                        @empty
+
+                                        <div class="item">
+                                            <div class="news-post standart-post">
+                                                <div class="post-image">
+                                                    <a href="single-post-2.html">
+                                                        <img src="{{ asset('frontend/upload/blog/s24.jpg')}}" alt="">
+                                                    </a>
+                                                    <a href="#" class="category category-travel">fashion</a>
                                                 </div>
                                                 <h2><a href="single-post.html">Autumn wear ...</a></h2>
                                                 <ul class="post-tags">
@@ -338,7 +186,10 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    
+                                            
+                                        @endforelse
+                                        
+{{--                                     
                                         <div class="item">
                                             <div class="news-post standart-post">
                                                 <div class="post-image">
@@ -401,7 +252,7 @@
                                                     <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> --}}
     
                                     </div>
                                 </div>

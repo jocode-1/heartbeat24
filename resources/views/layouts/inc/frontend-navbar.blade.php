@@ -41,7 +41,7 @@
                     <div class="container">
                         <a class="navbar-brand" href="index.html">
                             <img src="{{asset('frontend/images/logo.png')}}" alt="">
-                            <p>Newspaper &amp; Editorial HTML5 Magazine</p>
+                            {{-- <p>Newspaper &amp; Editorial HTML5 Magazine</p> --}}
                         </a>
     
                         <div class="advertisement">

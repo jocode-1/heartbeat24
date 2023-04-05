@@ -9,7 +9,7 @@
 
             <div class="profile-image col-md-4 col-sm-4 col-xs-4">
                 <a href="ui-profile.html">
-                    <img src="data/profile/profile-blog.jpg" class="img-responsive img-circle">
+                    <img src="{{ asset('assets/data/profile/profile-blog.jpg') }}"class="img-responsive img-circle">
                 </a>
             </div>
 
@@ -25,6 +25,7 @@
                 <p class="profile-title">Administrator</p>
 
             </div>
+            
 
         </div>
         <!-- USER INFO - END -->
@@ -40,7 +41,7 @@
                     <span class="title {{ Request::is('admin/dashboard') ? 'active':'' }}">Dashboard</span>
                 </a>
             </li>
-            <li class=""> 
+            {{-- <li class=""> 
                 <a href="javascript:;">
                     <i class="fa fa-edit"></i>
                     <span class="title">Blogs</span>
@@ -60,14 +61,14 @@
                         <a class="" href="blo-blog-view.html" >View Blog</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <li class=""> 
                 <a href="blo-search.html">
                     <i class="fa fa-search"></i>
                     <span class="title">Search</span>
                 </a>
             </li>
-            <li class=""> 
+            {{-- <li class=""> 
                 <a href="javascript:;">
                     <i class="fa fa-upload"></i>
                     <span class="title">Media</span>
@@ -81,7 +82,7 @@
                         <a class="" href="blo-upload.html" >Upload</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <li class=""> 
                 <a href="javascript:;">
                     <i class="fa fa-sitemap"></i>
@@ -131,7 +132,7 @@
                     
                 </ul>
             </li>
-            <li class=""> 
+            {{-- <li class=""> 
                 <a href="javascript:;">
                     <i class="fa fa-envelope"></i>
                     <span class="title">Mailbox</span>
@@ -148,8 +149,8 @@
                         <a class="" href="blo-mail-view.html" >View</a>
                     </li>
                 </ul>
-            </li>
-            <li class=""> 
+            </li> --}}
+            {{-- <li class=""> 
                 <a href="javascript:;">
                     <i class="fa fa-bar-chart"></i>
                     <span class="title">Reports</span>
@@ -217,7 +218,7 @@
                         <a class="" href="blog.html"  target = '_blank' >Blog Admin</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
         </ul>
 
